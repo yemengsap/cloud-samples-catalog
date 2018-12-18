@@ -8,6 +8,7 @@ stage ('first stage') {
 	deleteDir()
 	checkout scm
 	sh 'npm config set @sap:registry=https://npm.sap.com'
+	sh 'npm config set package-lock false'
 	mtaBuild script:this, mtaJarLocation:'..', buildTarget:'CF'
     }
 }
