@@ -7,7 +7,6 @@ stage ('first stage') {
         echo "Hello world!"
 	deleteDir()
 	checkout scm
-	sh 'npm config set @sap:registry=https://npm.sap.com'
-	mtaBuild script:this, mtaJarLocation:'..', buildTarget:'CF'
+	mtaBuild script: this, dockerImage: 'mta:latest', buildTarget: 'CF'
     }
 }
