@@ -7,7 +7,7 @@ stage ('mta') {
 	deleteDir()
 	checkout scm
         setupCommonPipelineEnvironment script: this
-	mtaBuild script: this, dockerImage: 'mta:latest', buildTarget: 'CF'
+	mtaBuild script: this, dockerImage: 'yemengsap/mta:latest', buildTarget: 'CF'
     }
 }
 stage('cf deploy') {
