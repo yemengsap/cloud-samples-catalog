@@ -2,11 +2,15 @@
 
 @Library('piper-library-os-experimental') _
 
-stage ('first stage') {
+stage ('mta') {
     node {
-        echo "Hello world!"
 	deleteDir()
 	checkout scm
 	mtaBuild script: this, dockerImage: 'mta:latest', buildTarget: 'CF'
+    }
+}
+stage('cf deploy') {
+    node {
+        cloudFoundryDeploy script: this, deployTool: 'mtaDeployPlugin', mtaPath: 'cloud.samples.catalog.mtar'
     }
 }
