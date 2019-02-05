@@ -1,3 +1,6 @@
+general:
+  collectTelemetryData: false
+
 steps:
   cloudFoundryDeploy:
     cloudFoundry:
